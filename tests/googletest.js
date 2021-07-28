@@ -1,12 +1,15 @@
+// import used functions
 const { openTab, focus, textBox, openBrowser, goto, click, image, write, closeBrowser, press, switchTo } = require('taiko');
 const headless = process.env.headless_chrome.toLowerCase() === 'true';
 
+// functions to run before test
 beforeSuite(async () => {
     await openBrowser({
         headless: headless,
     })
 });
 
+// functions to run before specs
 beforeSpec(async () => {
     await goto('http://google.com');
     await click('I agree');
@@ -15,6 +18,7 @@ beforeSpec(async () => {
 
 });
 
+//functions to run after test
 afterSuite(async () => {
     await closeBrowser();
 });
